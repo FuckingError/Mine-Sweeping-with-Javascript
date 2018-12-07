@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- 扫雷 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫雷</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--难度等级-->
+    <div class="level">
+        <button type="button" name="button" class="choice-level">初级</button>
+        <button type="button" name="button" class="choice-level">中级</button>
+        <button type="button" name="button" class="choice-level">高级</button>
+        <button type="button" name="button" class="restart">重新开始</button>
+    </div>
+    <!--游戏主界面-->
+    <div class="block">
+        <div class="game"></div>
+    </div>
+    <!--游戏信息-->
+    <div class="info">
+        <p>
+            剩余雷数 ：
+            <span class="residue" style="color: crimson"></span>&nbsp&nbsp&nbsp
+            剩余旗数 ：
+            <span class="flag" style="color: chocolate;"></span>
+        </p>
+        <p>
+            TIME ：
+            <span class="tick" style="color: cornflowerblue"></span> S
+        </p>
+    </div>
+    <script src="js.js" charset="utf-8"></script>
+</body>
+</html>
