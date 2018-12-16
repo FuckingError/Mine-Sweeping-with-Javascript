@@ -1,7 +1,6 @@
     body{    /*元素选择器*/
-        text-align: center;
-        position: relative;  /*对齐方式是相对定位*/
-    }
+         text-align: center;
+     }
 
     .level{
         margin-top: 30px;
@@ -9,48 +8,20 @@
     }
 
     .level button{
-        padding: 3px 8px; /*padding 依次是上 右 下 左   如果只有两个就是上下 左右*/
-        background: skyblue;
-        border: none; /*设置为none 否则按钮周围由阴影*/
-        color: white;
-        border-radius: 10px; /*border 四个角的圆半径*/
-        outline: none; /*在元素周围添加 方框*/
-        cursor: pointer; /*鼠标放到元素上 光标的形状*/
-    }
+          padding: 3px 8px; /*padding 依次是上 右 下 左   如果只有两个就是上下 左右*/
+          background: skyblue;
+          border: none; /*设置为none 否则按钮周围由阴影*/
+          color: white;
+          border-radius: 10px; /*border 四个角的圆半径*/
+          outline: none; /*去掉在元素周围方框*/
+      }
 
     .level button:hover{/*tip： 当光标放在按钮上 按钮有浮动感 可以使用这个选择器*/
         background: rgb(23, 132, 138);
+        cursor: pointer; /*鼠标放到元素上 光标的形状*/
     }
 
-    .row{
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        /*letter-spacing: -8px;*/
-    }
-
-    .col {
-        display: inline-block; /*这个属性很重要 将原本成列的li 成行内块元素放置  使其既能成行排列 又具有块元素的特性*/
-        background: rgba(32, 226, 255, 0.41);
-        border: 1px solid rgb(129, 129, 129);
-        margin: 1.5px;
-        width: 23px;/*width 和 height 只对块元素生效 所以display设置为inline-block */
-        height: 23px;
-        letter-spacing: normal;
-        position: relative;/*? */
-    }
-
-    .col span {
-        display: inline-block;/*? 为什么将这里设置为inline-block 就可以让每一个span都在同一行？*/
-        position: relative;
-        top: 2px;
-        opacity: 1; /*设置 div 元素的不透明级别  tip:通过改变透明度隐藏某些东西*/
-        font-weight: bold;
-        /* 标准箭头 */
-        cursor:default;
-    }
-
-   .img-flag {
+    .img-flag {
         position: absolute;
         top: 1.5px;
         left: 2.4px;
@@ -58,7 +29,35 @@
         height: 18px;
     }
 
-   .hide{
+    .col {
+        display: inline-block; /*这个属性很重要 将原本成列的li 成行内块元素放置  使其既能成行排列 又具有块元素的特性*/
+        border: 1px solid rgb(129, 129, 129);
+        background: rgba(32, 226, 255, 0.41);
+        margin: 1.5px;
+        width: 23px;
+        height: 23px;
+        position: relative;
+    }
+
+    .col span {
+        display: inline-block;/* 改成行内块元素就可以让每一个span都在同一行 */
+        position: relative;
+        top: 1px;
+        font-weight: bold;
+        opacity: 0; /*设置 div 元素的不透明级别  tip:通过改变透明度隐藏某些东西*/
+    }
+
+    .row{
+        margin: 0;
+        padding: 0;
+    }
+
+    .game{
+    margin-top: 30px;
+    }
+
+    /*控制旗帜的隐藏和显示*/
+    .hide{
        display:none;/*当设置为none时，旗子不会被显示*/
    }
 
@@ -67,14 +66,9 @@
         background: greenyellow;
     }
 
-    .game{
-        margin-top: 30px;
-    }
 
-    .blocked{
-        color:red;
-        opacity: 0.5;
-    }
+
+
 
     /*数字的颜色*/
     /*.js中添加的html代码 之所以在class中 添加num- 作用就在于控制数字颜色*/

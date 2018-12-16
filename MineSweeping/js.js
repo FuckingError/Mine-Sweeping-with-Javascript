@@ -70,7 +70,7 @@ function writeHTML(map){
     let game = document.querySelector('.game')
     for(let i=0;i<map.length;i++){
         //data- 自定义数据类型 ul的class 有多个类用空格隔开
-        game.innerHTML +=  `<ul class="row x-${i}" data-x="${i}"></ul>`;
+        game.innerHTML +=  `<ul class="row x-${i}" data-x="${i}"></ul>`;//data-x 自定义数据
     }
     let ul = document.querySelectorAll('.row');
     for(let i=0;i<ul.length;i++) {
@@ -111,17 +111,18 @@ function initGame(row,col,num){
     stop = setInterval(function showTime(){
         tick.innerHTML = `${t++}`;
     },1000);
+    over = 0;
 
 }
 
 
-
+let over = 0;
 //5.点击方块 显示数字或雷
 function show(map,record){
     let square = document.querySelectorAll('.col');
     for(let i=0;i<square.length;i++){
         square[i].addEventListener('mousedown',function(event) {//！ 使用mousedown 而不是 click 这样才能判断是哪个鼠标键按下了
-
+            if(over==0){
             //event target属性 返回触发事件的目标节点
             let li = event.target;//获取到li标签  或者是点击触发的是span
             if (li.nodeName == 'SPAN') { //如果触发的是span 就取它的父节点
@@ -159,6 +160,7 @@ function show(map,record){
                     }
                     window.alert('可惜可惜,下次吃鸡');
                     clearInterval(stop);//停止时间
+                    over = 1;
                 }
             }else if(event.button=='2'){//并且 span的透明度为0
                 let x = parseInt(String(li.parentElement.classList).split(' ')[1].substring(2));
@@ -171,6 +173,8 @@ function show(map,record){
                     if(num==0){
                         window.alert('大吉大利，今晚吃鸡');
                         //document.querySelector('.block').classList.add('blocked');
+                        clearInterval(stop);//停止时间
+                        over = 1;
                     }
                 }else if(!imgClass.contains('hide')){
                     flag++;
@@ -180,7 +184,7 @@ function show(map,record){
                 document.querySelector('.residue').innerHTML = num;
                 document.querySelector('.flag').innerHTML = flag;
             }
-        })
+        }})
     }
 
     //扩散白色区域
@@ -224,7 +228,7 @@ function show(map,record){
 
 
 /*1. 给游戏等级按钮绑定事件*/
-function Btn(){
+function setGrade(){
     //获取等级按钮   通过CSS 类选择器获取
     let level = document.querySelectorAll('.choice-level');
     //为按钮添加点击事件
@@ -234,13 +238,13 @@ function Btn(){
             /*属性说明：event对象 target属性
              返回事件的目标节点  event.target 得到触发事件的元素
             */
-            let level = event.target.innerHTML;
+            let level = event.target.innerHTML;//获取按钮里面的文本
             //window.alert(level)
             switch (level) {
                 case '初级':
                     row = 9;
                     col = 9;
-                    num = 10;
+                    num = 10;//num是雷的数量
                     break;
                 case '中级':
                     row = 16;
@@ -264,7 +268,7 @@ function Btn(){
         initGame(row,col,num);
     })
 }
-Btn();
+setGrade();
 
 //去掉浏览器默认右击事件
 window.onload = function(){
